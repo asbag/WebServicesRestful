@@ -1,0 +1,12 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"Tximista\\Restful2\\" : "src"
+		}
+	},
+	"name" : "tximista/Restful2",
+	"require" : {
+		"php" : ">=5.6",
+		"slim/slim" : "^2.6"
+	}
+}
