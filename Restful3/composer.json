@@ -1,0 +1,11 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"Com.tximista\\Restful3\\" : "src"
+		}
+	},
+	"name" : "com.tximista/Restful3",
+	"require" : {
+		"php" : ">=5.6"
+	}
+}
