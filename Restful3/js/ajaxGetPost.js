@@ -8,6 +8,7 @@ function post_ajax_data(url, encodedata, success)
 	type:"POST",
 	url:url,
 	data :encodedata,
+	data: "",
 	dataType:"json",
 	restful:true,
 	contentType: 'application/json',
