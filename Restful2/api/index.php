@@ -4,7 +4,7 @@ require_once 'Routes.php';
 $result = new Routes();
 
 if($_POST){
-	echo post_to_url("http://www.mirestful.es/users", $_POST);
+	echo post_to_url("http://www.mirestful.es/api/users", $_POST);
 } else{
 ?>
 ADD RECORD.

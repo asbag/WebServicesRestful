@@ -21,6 +21,7 @@ $db = getDB();
 $stmt = $db->query($sql);
 $users = $stmt->fetchAll(PDO::FETCH_OBJ);
 $db = null;
+
 echo '{"users": ' . json_encode($users) . '}';
 } catch(PDOException $e) {
 //error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log
@@ -48,12 +49,24 @@ echo '{"error":{"text":'. $e->getMessage() .'}}';
 // DELETE http://www.yourwebsite.com/api/updates/delete/10
 function deleteUpdate($update_id)
 {
-$sql = "DELETE FROM updates WHERE update_id=:update_id";
+$sql = "DELETE FROM users WHERE user_id=:update_id";
+
+
 try {
 $db = getDB();
 $stmt = $db->prepare($sql);
-$stmt->bindParam("update_id", $update_id);
+$stmt->bindParam(":update_id", $update_id);
 $stmt->execute();
+
+
+//Debugging
+ob_start();
+debug_print_backtrace();
+error_log(ob_get_clean());
+error_log('Identifying string: ' . $sql);
+error_log('Identifier: ' . $update_id);
+//End Debugging
+
 $db = null;
 echo true;
 } catch(PDOException $e) {
