@@ -1,14 +1,14 @@
 /**
  * 
  */
-//POST Ajax
-function post_ajax_data(url, encodedata, success)
+
+//PUT Ajax
+function put_ajax_data(url, encodedata, success)
 {
 	$.ajax({
-	type:"POST",
+	type:"PUT",
 	url:url,
 	data :encodedata,
-	data: "",
 	dataType:"json",
 	restful:true,
 	contentType: 'application/json',
@@ -20,7 +20,30 @@ function post_ajax_data(url, encodedata, success)
 	success.call(this, data);
 	},
 	error:function(data){
-	alert("Error In Connecting");
+	alert("Error In Connecting by put method");
+	}
+	});
+}
+
+//POST Ajax
+function post_ajax_data(url, encodedata, success)
+{
+	$.ajax({
+	type:"POST",
+	url:url,
+	data :encodedata,
+	dataType:"json",
+	restful:true,
+	contentType: 'application/json',
+	cache:false,
+	timeout:20000,
+	async:true,
+	beforeSend :function(data) { },
+	success:function(data){
+	success.call(this, data);
+	},
+	error:function(data){
+	alert("Error In Connecting by post method");
 	}
 	});
 }
@@ -41,7 +64,7 @@ function ajax_data(type, url, success)
 	success.call(this, data);
 	},
 	error:function(data){
-	alert("Error In Connecting");
+	alert("Error In Connecting by get method");
 	}
 	});
 }

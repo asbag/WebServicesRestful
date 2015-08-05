@@ -79,7 +79,7 @@ class Routes  {
 		$this->app->post('/api/users', function () { 
 			$req = $this->app->request(); // Getting parameter with names
 			$paramName = $req->params('name'); // Getting parameter with names
-			$paramEmail = $req->params('email'); // Getting parameter with names
+			$paramEmail = $req->params('email'); // Getting parameter with email
 			
 			$sql = "INSERT INTO restAPI (`name`,`email`,`ip`) VALUES (:name, :email, :ip)";
 			try {

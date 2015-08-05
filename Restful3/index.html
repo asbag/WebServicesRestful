@@ -27,14 +27,17 @@ ajax_data('GET',url, function(data) {
 /* Insert Update */
 $('body').on("click",'.stpostbutton',function() {
 										var update=$('#update').val();
+										var user_name=$('#user_name').val();
+										var user_id=$('#user_id').val();
 										encode=JSON.stringify({
 										        "user_update": update,
-										        "user_id": $('#user_id').val()
+										        "user_name": user_name
 										        });
-										url=base_url+'api/updates';
+										
+										url=base_url+'api/updates/'+user_id;
 										if(update.length>0)
 										{
-											post_ajax_data(url,encode, function(data) {
+											put_ajax_data(url,encode, function(data) {
 																			$.each(data.updates, function(i,data)
 																			{
 																			var html="<div class='stbody' id='stbody"+data.user_id+"'><div class='stimg'>data.username</div><div class='sttext'><strong>"+data.name+"</strong>"+data.user_id+"<span id='"+data.user_id+"' class='stdelete'>Delete</span></div></div>";
@@ -55,7 +58,7 @@ $('body').on("click",'#getUsers',function() {
 											ajax_data('GET',url,function(data) {
 																			$.each(data.users, function(i,data)
 																			{
-																			var html="<div class='stbody' id='stbody"+data.user_id+"'><div>"+data.username+"</div><div class='sttext'><strong>"+data.name+"</strong><button type='submit' id='"+data.user_id+"' class='stdelete'>Delete</button></div></div>";
+																			var html="<div class='stbody' id='stbody"+data.user_id+"'><div>"+data.username+"</div><div class='sttext'><strong>"+data.name+"</strong><button type='submit' id='"+data.user_id+"' class='stdelete'>Delete</button><button type='submit' id='"+data.user_id+"' class='stupdate'>Update</button></div></div>";
 																			$("#listUsers").prepend(html);
 																			$("#user_id").val = data.id;
 																			});
@@ -64,6 +67,19 @@ $('body').on("click",'#getUsers',function() {
 									}
 );
 
+
+/* Get Single User */
+$('body').on("click",'.stupdate',function() {
+										var ID=$(this).attr("id");
+										url=base_url+'api/users/get/'+ID;
+											ajax_data('GET',url,function(data) {
+																			$("#user_id").val(data.user_id);
+																			$("#user_name").val(data.username);
+																			$("#update").val(data.name);
+																		}
+											);
+									}
+);
 
 
 /* Delete Updates */
@@ -81,11 +97,13 @@ $('body').on("click",'.stdelete',function()
 </script>
 </head>
 <body>
-<div>
-<textarea id="update" class="stupdatebox"></textarea>
-<input type="hidden" id="user_id" value="1">
-<input type="submit" value="POST" class="stpostbutton">
-</div>
+<input type="hidden" id="user_id" name="user_id" value="">
+<label for="user_name">Username</label>
+<input type="text" name="user_name" id="user_name" value="">
+<label for="update">Full Name:</label>
+<textarea id="update" name="update" class="stupdatebox"></textarea>
+<input type="hidden" name="_METHOD" value="PUT"/>
+<input type="submit" value="PUT" class="stpostbutton">
 <button type="submit" value="GET" id="getUsers">Get Users</button>
 <div id="listUsers"></div>
 <div id="mainContent"></div>
