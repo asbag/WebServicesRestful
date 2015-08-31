@@ -22,7 +22,6 @@ function getUsers() {
 		$stmt = $db->query($sql);
 		$users = $stmt->fetchAll(PDO::FETCH_OBJ);
 		$db = null;
-		
 		echo '{"users": ' . json_encode($users) . '}';
 	} catch(PDOException $e) {
 		//error_log($e->getMessage(), 3, '/var/tmp/phperror.log'); //Write error log

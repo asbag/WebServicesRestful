@@ -1,0 +1,2 @@
+<?php
+define('DATABASE', 'i_wish')

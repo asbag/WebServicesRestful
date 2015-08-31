@@ -1,0 +1,29 @@
+<?php
+
+$method = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
+ 
+$uri = str_replace('/api/costabrava/', '', $uri ); //remove base pathinf
+ 
+$uriStruct = parse_url($uri);
+if (!isset($uriStruct['query'])) $uriStruct['query'] = null;
+ 
+$resource = explode('/',$uriStruct['path']);
+$versionApi = array_shift($resource); //obtiene la versión api desde la url
+ 
+parse_str($uriStruct['query'],$params); //separa los argumentos
+
+var_dump($versionApi);
+switch ($versionApi) {
+	case 'v1':
+		include('v1.php');
+		break;
+	default :
+		$error['code'] = '404';
+		$error['message'] = 'Api versión no supported';
+		header("Content-type: application/json; charset=utf-8");
+		header('Access-Control-Allow-Origin: *');
+		//http_response_code($error['code']);
+		echo json_encode($error);
+}
+?>

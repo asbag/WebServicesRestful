@@ -1,0 +1,8 @@
+<?php
+class Operaciones {
+	/**
+	 * @param int $a
+	 * @param int $b
+	 * @return int
+	 */
+}

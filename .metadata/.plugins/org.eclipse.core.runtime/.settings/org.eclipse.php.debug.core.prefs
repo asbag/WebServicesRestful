@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+org.eclipse.php.debug.core.pathMapper=<pathMappers><item1><mapper></mapper><server>Default PHP Web Server</server></item1></pathMappers>
+org.eclipse.php.debug.core.xdebugDebuggerSettingsProvider=<settings><clientPort>9000</clientPort><ownerId>php-exe-2f04ad25-5005-4ea5-87f7-b28eec01e1f8</ownerId><proxyIdeKey></proxyIdeKey><proxyAddress></proxyAddress><proxyEnable>false</proxyEnable></settings>\u0005<settings><clientPort>9000</clientPort><ownerId>php-server-71236ee0-d880-4850-9639-2bfd4b1cfd5a</ownerId><proxyIdeKey></proxyIdeKey><proxyAddress></proxyAddress><proxyEnable>false</proxyEnable></settings>
+org.eclipse.php.debug.core.zendDebuggerSettingsProvider=<settings><clientPort>10137</clientPort><ownerId>php-exe-2f04ad25-5005-4ea5-87f7-b28eec01e1f8</ownerId></settings>\u0005<settings><clientPort>10137</clientPort><ownerId>php-server-71236ee0-d880-4850-9639-2bfd4b1cfd5a</ownerId><clientIp>172.16.131.129,127.0.0.1</clientIp><responseTimeout>60000</responseTimeout></settings>
+org.eclipse.php.debug.coredefaultPHP=PHP
+org.eclipse.php.debug.coreinstalledPHPDebuggers=org.eclipse.php.debug.core.noneDebugger
+org.eclipse.php.debug.coreinstalledPHPInis=null
+org.eclipse.php.debug.coreinstalledPHPLoadIniDefaults=true
+org.eclipse.php.debug.coreinstalledPHPLocations=/usr/bin/php5
+org.eclipse.php.debug.coreinstalledPHPNames=PHP
+org.eclipse.php.debug.coreinstalledPHPUniqueIds=php-exe-2f04ad25-5005-4ea5-87f7-b28eec01e1f8
+org.eclipse.php.debug.corephp_versions=null

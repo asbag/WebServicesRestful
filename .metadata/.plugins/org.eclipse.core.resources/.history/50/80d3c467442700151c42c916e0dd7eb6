@@ -1,0 +1,6 @@
+<?php
+ 
+// incluimos la libreria ó toolkit nusoap que descargamos previamente
+require_once('lib/nusoap.php');
+ 
+?>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A sample WSDL file. -->
+<definitions name="BisqwitAjaxSoapDemo" targetNamespace="urn:BisqwitAjaxSoapDemo" xmlns:typens="urn:BisqwitAjaxSoapDemo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <!-- Types for results -->
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:BisqwitAjaxSoapDemo">
+      <xsd:complexType name="DemoResult">
+       <xsd:all>
+        <xsd:element name="count" type="xsd:int"/>
+        <xsd:element name="size" type="xsd:int"/>
+       </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </types> 
+
+  <!-- Messages -->
+  <message name="ItemQueryMessage">
+    <part name="item" type="xsd:string"/>
+  </message>
+  <message name="ItemQueryResponse">
+    <part name="return" type="typens:DemoResult"/>
+  </message>
+
+  <!-- Port -->
+  <portType name="BisqwitAjaxSoapDemoPort">
+    <operation name="ItemQuery">
+      <input message="typens:ItemQueryMessage"/>
+      <output message="typens:ItemQueryResponse"/>
+    </operation>
+  </portType>
+
+  <!-- Bindings for each operation -->
+
+  <binding name="BisqwitAjaxSoapDemoBinding" type="typens:BisqwitAjaxSoapDemoPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <operation name="ItemQuery">
+      <soap:operation soapAction="urn:BisqwitAjaxSoapDemoAction"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:BisqwitAjaxSoapDemo" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:BisqwitAjaxSoapDemo" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+
+  <!-- Endpoint -->
+  <service name="BisqwitAjaxSoapDemoService">
+    <port name="BisqwitAjaxSoapDemoPort" binding="typens:BisqwitAjaxSoapDemoBinding">
+      <soap:address location="http://bisqwit.iki.fi/jutut/kuvat/ajaxsoapdemo/api"/>
+    </port>
+  </service>
+
+</definitions>

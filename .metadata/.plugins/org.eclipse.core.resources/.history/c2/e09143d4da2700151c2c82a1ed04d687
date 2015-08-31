@@ -1,0 +1,57 @@
+<?php
+/**
+ * Clase que envuelve una instancia de la clase PDO
+ * para el manejo de la base de datos
+ * Class that wraps an instance of the PDO class 
+ * to manage the Database. Singleton pattern design. Only one database instance at the same time
+ */
+
+spl_autoload_extensions('.php');
+spl_autoload_register('mysql_login');
+
+class Database {
+	/**
+	 * @author David Mezquíriz
+	 * @copyright David Mezquíriz
+	 */
+	
+	/**
+	 * Single instance of database
+	 * @static 
+	 * @var db
+	 */
+	private static $db = null;
+	
+	/**
+	 * Instance of pdo
+	 * @var pdo
+	 * @static
+	 */
+	private static $pdo;
+	
+	final private function __construct() {
+		try {
+			//Create new PDO database connection
+			
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public function getDb () {
+		if (self::$pdo == null) {
+			$dsn = 'DBENGINE:dbname='.DATABASE. ';host='.HOST.';portname='.PORTNAME . ';';
+			try {
+				self::$pdo = new PDO($dsn, USERNAME, PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+				//Enabling exceptions
+				self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			} catch (PDOException $e) {
+				echo $e->getMessage();
+			}
+		}
+		return self::$pdo;
+	}
+}

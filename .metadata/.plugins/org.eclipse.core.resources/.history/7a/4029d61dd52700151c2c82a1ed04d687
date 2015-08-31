@@ -1,0 +1,11 @@
+<?php
+/**
+ * Clase que envuelve una instancia de la clase PDO
+ * para el manejo de la base de datos
+ * Class that wraps an instance of the PDO class 
+ * to manage the Database
+ */
+
+class Database {
+	
+}

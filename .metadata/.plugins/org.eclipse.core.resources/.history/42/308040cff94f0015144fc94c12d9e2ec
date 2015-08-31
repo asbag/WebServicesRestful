@@ -1,0 +1,9 @@
+<?php
+/**
+ * @author David Mezquíriz Osés
+ */
+ 
+require 'vendor/autoload.php';
+
+
+?>

@@ -1,0 +1,11 @@
+<?php
+/**
+ * 
+ * @author David Mezquíriz Osés
+ * @copyright David Mezquíriz 2015
+ * Structure of wishes keeped in database by the table meta
+ */
+ 
+class Meta {
+	
+}

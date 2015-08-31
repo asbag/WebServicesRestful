@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/ajaxGetPost.js"></script>
+<script>
+$(document).ready(function()
+{
+
+var base_url="http://www.mirestful2.es/";
+var url,encodedata;
+$("#update").focus();
+
+/* Load Updates */
+ 
+/*
+url=base_url+'api/updates';
+ajax_data('GET',url, function(data) {
+						$.each(data.updates, function(i,data) {
+											var html="<div class='stbody' id='stbody"+data.update_id+"'><div class='stimg'><img src='"+data.profile_pic+"' class='stprofileimg'/></div><div class='sttext'><strong>"+data.name+"</strong>"+data.user_update+"<span id='"+data.update_id+"' class='stdelete'>Delete</span></div></div>";
+											$(html).appendTo("#mainContent");
+											}
+						);
+});
+*/
+
+/* Insert Update */
+$('body').on("click",'.stpostbutton',function() {
+										var update=$('#update').val();
+										var user_name=$('#user_name').val();
+										var user_id=$('#user_id').val()
+										encode=JSON.stringify({
+										        "user_update": update,
+										        "user_name": user_name,
+										        "user_id": user_id
+										        });
+										url=base_url+'api/updates';
+										if(update.length>0)
+										{
+											alert(encode);
+											post_ajax_data(url,encode, function(data) {
+																			$.each(data.updates, function(i,data)
+																			{
+																			var html="<div class='stbody' id='stbody"+data.user_id+"'><div class='stimg'>data.username</div><div class='sttext'><strong>"+data.name+"</strong>"+data.user_id+"<span id='"+data.user_id+"' class='stdelete'>Delete</span></div></div>";
+																			$("#mainContent").prepend(html);
+																			$('#update').val('').focus();
+																			});
+																		}
+											);
+										}
+
+									}
+);
+
+
+/* Get Users */
+$('body').on("click",'#getUsers',function() {
+										url=base_url+'api/users';
+											ajax_data('GET',url,function(data) {
+																			$.each(data.users, function(i,data)
+																			{
+																			var html="<div class='stbody' id='stbody"+data.user_id+"'><div>"+data.username+"</div><div class='sttext'><strong>"+data.name+"</strong><button type='submit' id='"+data.user_id+"' class='stdelete'>Delete</button><button type='submit' id='"+data.user_id+"' class='stupdate'>Update</button></div></div>";
+																			$("#listUsers").prepend(html);
+																			$("#user_id").val = data.id;
+																			});
+																		}
+											);
+									}
+);
+
+
+/* Get Single User */
+$('body').on("click",'.stupdate',function() {
+										var ID=$(this).attr("id");
+										url=base_url+'api/users/get/'+ID;
+											ajax_data('GET',url,function(data) {
+																			$("#user_id").val(data.id);
+																			$("#user_name").val(data.username);
+																			$("#update").val(data.name);
+																		}
+											);
+									}
+);
+
+
+/* Delete Updates */
+$('body').on("click",'.stdelete',function()
+{
+	var ID=$(this).attr("id");
+	url=base_url+'api/updates/delete/'+ID;
+	ajax_data('DELETE',url, function(data)
+	{
+		$("#stbody"+ID).fadeOut("slow");
+	});
+});
+
+});
+</script>
+</head>
+<body>
+<input type="hidden" id="user_id" name="user_id" value="">
+<label for="user_name">Username</label>
+<input type="text" name="user_name" id="user_name" value="">
+<label for="update">Full Name:</label>
+<textarea id="update" name="update" class="stupdatebox"></textarea>
+
+<input type="submit" value="POST" class="stpostbutton">
+<button type="submit" value="GET" id="getUsers">Get Users</button>
+<div id="listUsers"></div>
+<div id="mainContent"></div>
+</body>
+</html>

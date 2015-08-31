@@ -1,0 +1,11 @@
+<?php
+if (isset($resource[0])) {
+	switch ($resource[0]) {
+		case 'tickets':
+		$data = "todos los tickets";
+		break;
+	}
+} else {
+	$error['code'] = '400';
+	$error['message'] = 'Llamada incorrecta';
+}

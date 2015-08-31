@@ -1,0 +1,35 @@
+<?php
+/**
+ * @author David Mezquíriz Osés
+ * 
+ * This API demo provides a RESTful API interface for a web application
+ * Input:
+ * 
+ * 	$_GET['format'] = [ json | html | xml ]
+ *  $_GET['method'] = []
+ *  
+ *  Output:
+ *  
+ *   A formatted HTTP response
+ */
+ 
+
+function deliver_response ($format, $api_response) {
+	//Define HTTP responses
+	$http_response_code = array(
+					200 => 'OK',
+					400 => 'Bad Authorized',
+					401 => 'Unauthorized',
+					403 => 'Forbidden',
+					404 => 'Not found'
+	);
+	
+	
+	// Set HTTP Response
+    header('HTTP/1.1 '.$api_response['status'].' '.$http_response_code[ $api_response['status'] ]);
+ 
+}
+ 
+
+
+
