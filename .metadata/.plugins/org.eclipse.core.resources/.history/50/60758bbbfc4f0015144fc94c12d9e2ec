@@ -1,0 +1,14 @@
+<?php
+/**
+* @author David Mezquíriz Osés
+* Load all the variables of the database
+*/
+
+
+class Db {
+	private $username;
+	private $password;
+	private $database = 'restful4';
+	$engine = 'mysql';
+
+}

@@ -1,0 +1,10 @@
+<?php
+/**
+* @author David Mezquíriz Osés
+* Load all the variables of the database
+*/
+
+$username = 'root';
+$password = 'java_innova4b';
+$database = 'restful4';
+$engine = 'mysql';

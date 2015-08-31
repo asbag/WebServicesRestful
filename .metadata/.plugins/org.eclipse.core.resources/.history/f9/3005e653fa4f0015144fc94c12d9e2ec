@@ -1,0 +1,12 @@
+<?php
+/**
+ * @author David Mezquíriz Osés
+ */
+ 
+require 'vendor/autoload.php';
+
+$app = new \Slim\Slim();
+
+$app->get('/', 'indexFunction');
+$app->get('/frameworks','listFrameworks');
+?>

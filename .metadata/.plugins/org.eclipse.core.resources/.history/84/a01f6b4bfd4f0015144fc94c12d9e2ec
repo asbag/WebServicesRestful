@@ -1,0 +1,18 @@
+<?php
+/**
+* @author David Mezquíriz Osés
+* Load all the variables of the database
+*/
+
+require('Db_vars.php');
+
+class Db {
+	private $username;
+	private $password;
+	private $database;
+	private $engine;
+
+	function __construct()  {
+		$this ->username = USERNAME; 
+	}
+}
